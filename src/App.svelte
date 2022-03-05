@@ -1,7 +1,26 @@
 <script>
-  import YouTube from "svelte-youtube";
+  import YouTube from "./YouTube.svelte";
+
+  let videoState;
+  let player;
 </script>
 
-<YouTube 
-	videoId = {"btWnZxF-Hck"}
-/>
+<div class="player">
+  <YouTube
+    videoId="btWnZxF-Hck"
+    on:StateChange={({ detail }) => (videoState = detail)}
+    bind:this={player}
+  />
+
+  <br>
+
+  <button on:click={() => player.playVideo()}>Play Video</button>
+
+  <p>{videoState}</p>
+</div>
+
+<style>
+  .player {
+    text-align: center;
+  }
+</style>
