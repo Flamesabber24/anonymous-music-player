@@ -10,7 +10,23 @@
 </script>
 
 <script>
-  import { createEventDispatcher } from "svelte";
+  import { createEventDispatcher, onDestroy } from "svelte";
+  import { songs } from "./stores";
+
+  let songsList;
+
+  const unsubscribe = songs.subscribe((songs) => {
+    songsList = songs;
+  });
+
+  function getRandomIndex(arr) {
+    return Math.floor(Math.random() * arr.length);
+  }
+
+  const songIds = Object.values(songsList);
+
+  onDestroy(unsubscribe);
+
   const dispatch = createEventDispatcher();
 
   export let videoId;
@@ -29,15 +45,14 @@
   });
 
   const onPlayerReady = (event) => {
-    event.target.loadVideoById(videoId, 0, "small");
+    event.target.loadVideoById(videoId, 0);
   };
 
   const onPlayerStateChange = ({ data }) => {
     dispatch("StateChange", data);
 
-    if (data == 0)
-    {
-      player.loadVideoById("9nRvqemGydw", 0, "small");
+    if (data == 0) {
+      player.loadVideoById(songIds[getRandomIndex(songIds)], 0);
     }
   };
 
