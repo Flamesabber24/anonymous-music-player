@@ -13,7 +13,7 @@
     bind:this={player}
   />
 
-  <br>
+  <br />
 
   <button on:click={() => player.playVideo()}>Play Video</button>
 

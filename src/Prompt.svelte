@@ -12,7 +12,9 @@
   const handlePrompt = (arr) => {
     songsList[arr[0]] = arr[1];
 
-    songs.subscribe((value) => localStorage.songs = JSON.stringify(songsList));
+    songs.subscribe(
+      (value) => (localStorage.songs = JSON.stringify(songsList))
+    );
   };
 
   onDestroy(unsubscribe);
