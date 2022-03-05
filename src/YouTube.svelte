@@ -59,18 +59,6 @@
   export const playVideo = () => {
     player.playVideo();
   };
-
-  const addNewSong = () => {
-    songsList["bodhai kaname"] = "mfw2sMi6lrw";
-    songs.subscribe((value) => localStorage.songs = JSON.stringify(songsList));
-  }
-
-  const removeSong = () => {
-    delete songsList["bodhai kaname"];
-    songs.subscribe((value) => localStorage.songs = JSON.stringify(songsList));
-  }
 </script>
 
 <div id="player" class="player" />
-<button on:click={addNewSong}>Add new song</button>
-<button on:click={removeSong}>Remove song</button>

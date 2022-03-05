@@ -1,5 +1,6 @@
 <script>
   import YouTube from "./YouTube.svelte";
+  import Prompt from "./Prompt.svelte";
 
   let videoState;
   let player;
@@ -17,6 +18,8 @@
   <button on:click={() => player.playVideo()}>Play Video</button>
 
   <p>{videoState}</p>
+
+  <Prompt />
 </div>
 
 <style>
