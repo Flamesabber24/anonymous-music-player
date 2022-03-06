@@ -1,12 +1,15 @@
 <script>
   import YouTube from "./YouTube.svelte";
   import Prompt from "./Prompt.svelte";
+  import Songs from "./Songs.svelte";
 
   let videoState;
   let player;
 </script>
 
 <div class="player">
+  <Songs />
+
   <YouTube
     videoId="btWnZxF-Hck"
     on:StateChange={({ detail }) => (videoState = detail)}
