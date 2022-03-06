@@ -2,4 +2,4 @@
   export let name;
 </script>
 
-<p>{name}</p>
+<span>{name}</span>
