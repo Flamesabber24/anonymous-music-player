@@ -25,4 +25,3 @@
     dialogs.prompt(["Enter song name", "Paste song link"]).then(handlePrompt)}
   >Add new song</button
 >
-<button on:click={() => console.log("remove song clicked")}>Remove song</button>
