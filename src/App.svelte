@@ -25,8 +25,8 @@
   <Prompt />
 </div>
 
-<style>
-  .player {
-    text-align: center;
-  }
+<style lang="postcss" global>
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
 </style>
