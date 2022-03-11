@@ -1,28 +1,23 @@
 <script>
   import YouTube from "./YouTube.svelte";
-  import Prompt from "./Prompt.svelte";
   import Songs from "./Songs.svelte";
 
   let videoState;
   let player;
 </script>
 
-<div class="player">
-  <Songs />
+<div class="h-screen w-screen m-0 pt-24">
+  <div class="flex justify-evenly max-w-fit m-auto">
+    <Songs />
 
-  <YouTube
-    videoId="btWnZxF-Hck"
-    on:StateChange={({ detail }) => (videoState = detail)}
-    bind:this={player}
-  />
+    <div style="width: 100px;" />
 
-  <br />
-
-  <button on:click={() => player.playVideo()}>Play Video</button>
-
-  <p>{videoState}</p>
-
-  <Prompt />
+    <YouTube
+      videoId="btWnZxF-Hck"
+      on:StateChange={({ detail }) => (videoState = detail)}
+      bind:this={player}
+    />
+  </div>
 </div>
 
 <style lang="postcss" global>

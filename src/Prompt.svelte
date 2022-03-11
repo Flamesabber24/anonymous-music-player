@@ -1,9 +1,11 @@
 <script>
-  import { onDestroy } from "svelte";
+  import { onDestroy, createEventDispatcher } from "svelte";
   import { dialogs } from "svelte-dialogs";
   import { songs } from "./stores";
 
   let songsList;
+
+  const dispatch = createEventDispatcher();
 
   const unsubscribe = songs.subscribe((songs) => {
     songsList = JSON.parse(songs);
@@ -15,6 +17,10 @@
     songs.subscribe(
       (value) => (localStorage.songs = JSON.stringify(songsList))
     );
+
+    dispatch("songAdded", {
+      songs: JSON.parse(localStorage.songs),
+    });
   };
 
   onDestroy(unsubscribe);

@@ -61,4 +61,7 @@
   };
 </script>
 
-<div id="player" class="player" />
+<div>
+  <div id="player" class="player" />
+  <button on:click={() => player.playVideo()}>Play Video</button>
+</div>

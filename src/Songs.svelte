@@ -2,8 +2,8 @@
   import { onDestroy } from "svelte";
   import { songs } from "./stores";
   import Song from "./Song.svelte";
-  import { X } from "svelte-bootstrap-icons";
   import { dialogs } from "svelte-dialogs";
+  import Prompt from "./Prompt.svelte";
 
   let songsObj;
 
@@ -31,17 +31,38 @@
     }
   };
 
-  console.log(songsList);
+  const handleSongAdded = (event) => {
+    songsObj = event.detail.songs;
+
+    let newSong = Object.keys(songsObj);
+    newSong = newSong[newSong.length - 1];
+
+    songsList = [...songsList, { id: i, name: newSong }];
+    i++;
+  };
 
   onDestroy(unsubscribe);
 </script>
 
-{#each songsList as song (song.id)}
-  <Song name={song.name} />
-  <button
-    on:click={() =>
-      dialogs
-        .confirm("Do you want to delete the song?")
-        .then((res) => removeSong(res, song.id))}><X /></button
-  >
-{/each}
+<div class="flex min-w-fit flex-col">
+  <h3 class="text-2xl bg-zinc-900 text-white pl-5">Songs</h3>
+  <div class="bg-gray-200 pl-3">
+    {#each songsList as song (song.id)}
+      <div class="border-b-2 border-gray-300 flex flex-row">
+        <Song name={song.name} />
+        <div class="grow" />
+        <div class="inline-block">
+          <button
+            class="ml-2 px-3 py-1 my-1 hover:bg-red-400 border-none rounded"
+            on:click={() =>
+              dialogs
+                .confirm("Do you want to delete the song?")
+                .then((res) => removeSong(res, song.id))}>X</button
+          >
+        </div>
+      </div>
+    {/each}
+  </div>
+
+  <Prompt on:songAdded={handleSongAdded} />
+</div>

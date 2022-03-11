@@ -2,4 +2,6 @@
   export let name;
 </script>
 
-<span>{name}</span>
+<div class="pt-2">
+  <p>{name}</p>
+</div>
