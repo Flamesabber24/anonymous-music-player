@@ -2,7 +2,6 @@
   import { onDestroy } from "svelte";
   import { songs } from "./stores";
   import Song from "./Song.svelte";
-  import { dialogs } from "svelte-dialogs";
   import Prompt from "./Prompt.svelte";
 
   let songsObj;
@@ -45,21 +44,14 @@
 </script>
 
 <div class="flex min-w-fit flex-col items-center content-around">
-  <h3 class="text-2xl bg-zinc-900 text-white w-full pl-5">Songs</h3>
-  <div class="bg-gray-200 pl-3">
+  <h3 class="text-2xl bg-zinc-900 text-white w-full z-10 text-center">Songs</h3>
+  <div class="bg-gray-200 overflow-scroll songs">
     {#each songsList as song (song.id)}
-      <div class="border-b-2 border-gray-300 flex flex-row">
-        <Song name={song.name} />
-        <div class="grow" />
-        <div class="inline-block">
-          <button
-            class="ml-2 px-3 py-1 my-1 hover:bg-red-400 border-none rounded"
-            on:click={() =>
-              dialogs
-                .confirm("Do you want to delete the song?")
-                .then((res) => removeSong(res, song.id))}>X</button
-          >
-        </div>
+      <div class="border-b-2 border-gray-300 flex flex-row pl-3">
+        <Song
+          name={song.name}
+          on:remove={({ detail }) => removeSong(detail, song.id)}
+        />
       </div>
     {/each}
   </div>
@@ -68,3 +60,9 @@
 
   <Prompt on:songAdded={handleSongAdded} />
 </div>
+
+<style>
+  .songs {
+    height: 358px;
+  }
+</style>
