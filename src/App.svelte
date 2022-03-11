@@ -6,7 +6,7 @@
   let player;
 </script>
 
-<div class="h-screen w-screen m-0 pt-24">
+<div class="h-screen w-screen m-0 pt-24 bg-sky-50">
   <div class="flex justify-evenly max-w-fit m-auto">
     <Songs />
 
