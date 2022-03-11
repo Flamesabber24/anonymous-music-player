@@ -11,7 +11,9 @@
 
 <script>
   import { createEventDispatcher, onDestroy } from "svelte";
-  import { songs } from "./stores";
+  import { songs, playSong } from "./stores";
+
+  $: $playSong, playThisSong();
 
   let songsList;
 
@@ -56,12 +58,24 @@
     }
   };
 
+  const playThisSong = () => {
+    if ($playSong !== "") {
+      player.loadVideoById(songsList[$playSong], 0);
+    }
+  };
+
   export const playVideo = () => {
     player.playVideo();
   };
 </script>
 
-<div>
+<div class="flex flex-col items-center">
   <div id="player" class="player" />
-  <button on:click={() => player.playVideo()}>Play Video</button>
+
+  <div style="height: 10px;" />
+
+  <button
+    class="bg-cyan-700 text-zinc-50 p-0.5 px-2.5"
+    on:click={() => player.playVideo()}>Play Video</button
+  >
 </div>

@@ -27,6 +27,7 @@
 </script>
 
 <button
+  class="bg-cyan-700 text-zinc-50 p-0.5 px-2"
   on:click={() =>
     dialogs.prompt(["Enter song name", "Paste song link"]).then(handlePrompt)}
   >Add new song</button

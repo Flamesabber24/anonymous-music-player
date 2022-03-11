@@ -44,8 +44,8 @@
   onDestroy(unsubscribe);
 </script>
 
-<div class="flex min-w-fit flex-col">
-  <h3 class="text-2xl bg-zinc-900 text-white pl-5">Songs</h3>
+<div class="flex min-w-fit flex-col items-center content-around">
+  <h3 class="text-2xl bg-zinc-900 text-white w-full pl-5">Songs</h3>
   <div class="bg-gray-200 pl-3">
     {#each songsList as song (song.id)}
       <div class="border-b-2 border-gray-300 flex flex-row">
@@ -63,6 +63,8 @@
       </div>
     {/each}
   </div>
+
+  <div style="height: 10px;" />
 
   <Prompt on:songAdded={handleSongAdded} />
 </div>
