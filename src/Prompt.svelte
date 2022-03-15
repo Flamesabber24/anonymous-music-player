@@ -2,6 +2,7 @@
   import { onDestroy, createEventDispatcher } from "svelte";
   import { dialogs } from "svelte-dialogs";
   import { songs } from "./stores";
+  import Plus from "svelte-material-icons/Plus.svelte";
 
   let songsList;
 
@@ -30,5 +31,6 @@
   class="bg-cyan-700 text-zinc-50 p-0.5 px-2"
   on:click={() =>
     dialogs.prompt(["Enter song name", "Paste song link"]).then(handlePrompt)}
-  >Add new song</button
 >
+  <Plus />
+</button>

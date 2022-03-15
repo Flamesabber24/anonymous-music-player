@@ -1,9 +1,6 @@
 <script>
   import YouTube from "./YouTube.svelte";
   import Songs from "./Songs.svelte";
-
-  let videoState;
-  let player;
 </script>
 
 <div class="h-screen w-screen m-0 pt-24 bg-sky-50">
@@ -12,11 +9,7 @@
 
     <div style="width: 100px;" />
 
-    <YouTube
-      videoId="btWnZxF-Hck"
-      on:StateChange={({ detail }) => (videoState = detail)}
-      bind:this={player}
-    />
+    <YouTube videoId="btWnZxF-Hck" />
   </div>
 </div>
 
