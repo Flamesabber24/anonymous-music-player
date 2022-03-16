@@ -67,20 +67,22 @@
   onDestroy(unsubscribe);
 </script>
 
-<div class="flex min-w-fit flex-col items-center content-around">
-  <h3 class="text-2xl bg-zinc-900 text-white w-full z-10 text-center">Songs</h3>
+<div
+  class="flex min-w-fit flex-col items-center content-around songs-container"
+>
+  <h3
+    class="text-2xl bg-fuchsia-700 text-fuchsia-100 w-full z-10 text-center"
+    style="font-family: 'Montserrat', sans-serif;"
+  >
+    Songs
+  </h3>
   <Search
     on:search={({ detail }) => onSearch(detail)}
     on:enter={({ detail }) => onEnter(detail)}
   />
-  <div class="bg-gray-200 overflow-scroll songs">
+  <div class="bg-fuchsia-200 overflow-scroll w-full songs font-serif">
     {#each isSearchApply ? filteredList : songsList as song (song)}
-      <div class="border-b-2 border-gray-300 flex flex-row pl-3">
-        <Song
-          name={song}
-          on:remove={({ detail }) => removeSong(detail, song)}
-        />
-      </div>
+      <Song name={song} on:remove={({ detail }) => removeSong(detail, song)} />
     {/each}
   </div>
 
@@ -91,6 +93,10 @@
 
 <style>
   .songs {
-    height: 358px;
+    height: 325px;
+  }
+
+  .songs-container {
+    width: 300px;
   }
 </style>

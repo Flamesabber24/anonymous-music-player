@@ -15,10 +15,16 @@
 </script>
 
 <input
-  class="w-full pl-3 focus:outline-none"
+  class="w-full pl-3 focus:outline-none h-8"
   type="text"
   placeholder="Search..."
   bind:value={searchResult}
   on:input={onSearchChange}
   on:keypress={onEnterPressed}
 />
+
+<style>
+  input {
+    font-family: "Montserrat", sans-serif;
+  }
+</style>

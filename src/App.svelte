@@ -1,10 +1,13 @@
 <script>
   import YouTube from "./YouTube.svelte";
   import Songs from "./Songs.svelte";
+  import Title from "./Title.svelte";
 </script>
 
-<div class="h-screen w-screen m-0 pt-24 bg-sky-50">
-  <div class="flex justify-evenly max-w-fit m-auto">
+<div class="h-screen w-screen m-0 bg-fuchsia-900">
+  <Title />
+
+  <div class="flex justify-evenly max-w-fit m-auto mt-5">
     <Songs />
 
     <div style="width: 100px;" />

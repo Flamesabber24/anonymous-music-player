@@ -10,7 +10,7 @@
 </script>
 
 <script>
-  import { createEventDispatcher, onDestroy } from "svelte";
+  import { onDestroy } from "svelte";
   import { songs, playSong } from "./stores";
   import Play from "svelte-material-icons/Play.svelte";
   import Pause from "svelte-material-icons/Pause.svelte";
@@ -31,8 +31,6 @@
   const songIds = Object.values(songsList);
 
   onDestroy(unsubscribe);
-
-  const dispatch = createEventDispatcher();
 
   export let videoId;
 
@@ -93,7 +91,7 @@
 
   <div class="flex justify-evenly w-full">
     <button
-      class="bg-cyan-700 text-zinc-50 p-0.5 px-2.5"
+      class="bg-fuchsia-700 text-zinc-50 p-0.5 px-2.5"
       on:click={toggleVideo}
     >
       {#if togglePlay}
@@ -103,7 +101,10 @@
       {/if}
     </button>
 
-    <button class="bg-cyan-700 text-zinc-50 p-0.5 px-2.5" on:click={nextVideo}>
+    <button
+      class="bg-fuchsia-700 text-zinc-50 p-0.5 px-2.5"
+      on:click={nextVideo}
+    >
       <SkipNext />
     </button>
   </div>
